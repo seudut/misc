@@ -1,0 +1,707 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{fancyvrb}
+\usepackage{relsize}
+\usepackage{listings}
+\lstset{breaklines=true}
+\usepackage{courier}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{newverbs}
+\usepackage[thicklines]{cancel}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[P2P: SCR/SCA]{SCR/SCA} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Peng Li} % Your name
+\institute[CPVE] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+\\ % Your institution for the title page
+\medskip
+\textit{peli3@cisco.com} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+%\section{SCR/SCA Introduction} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+%\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}[fragile]
+\frametitle{SCR/SCA Flow}
+\begin{itemize}
+
+\item {\relsize{-2} SCR/SCA Flow}
+\begin{center}
+%\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-3}, frame=single, rulecolor=\color{red}]
+\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-3}, frame=single, rulecolor=\color{red}]
+
+        SCR                      SCA
+     --------->               ---------> 
+   A            B           A            B 
+     <---------               <---------
+        SCA                      SCAACK    
+
+\end{BVerbatim}
+\end{center}
+
+%%%%%\item {\relsize{-2} SCR/SCA Packet Header}
+%%%%%
+%%%%%
+%%%%%  {\relsize{-2} SCR is a Payload-Specific RTP Feedback Message, and extend the FCI data}
+%%%%%
+%%%%%\begin{center}
+%%%%%\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-4}]
+%%%%%0                   1                   2                   3
+%%%%%0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|            Application Feedback Identifier ('MSTR')           |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%| Multistream Msg Type  |  Ver  |         Sequence Number       |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%\end{BVerbatim}
+%%%%%\end{center}
+%%%%%
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+%%%%%\begin{frame}[fragile]
+%%%%%\frametitle{SCR Packet}
+%%%%%
+%%%%%\begin{itemize}
+%%%%%
+%%%%%\item {\relsize{-3} Policy Info (Active Speaker, Receiver Selected, None)}
+%%%%%\begin{center}
+%%%%%\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-4}]
+%%%%%0                   1                   2                   3
+%%%%%0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%| Channel Id    | Source Id     |     Length                    |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|                         Bitrate                               |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|     Policy Type               |     Policy Info Length (4)    |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|  Priority     |grouping adj-Id|         Reserved              |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%\end{BVerbatim}
+%%%%%\end{center}
+%%%%%
+%%%%%\item {\relsize{-3} Payload Info (H264, audio)}
+%%%%%\begin{center}
+%%%%%\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-4}]
+%%%%%0                   1                   2                   3
+%%%%%0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|  PayloadType  | Reserved      | Payload Info Length           |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|                       Max MBPS                                |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|     Max FS                    |   Max FPS                     |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|Temporal Layers|     .../Padding                               |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%\end{BVerbatim}
+%%%%%\end{center}
+%%%%%
+%%%%%\relsize{-3} the Policy Info part is not used yet, CPVE has the default value. While the 
+%%%%%Payload Info part should be passed to CPVE from ECC when calling Session::sendSCR()
+%%%%%
+%%%%%\end{itemize}
+%%%%%\end{frame}
+%%%%%
+%%%%%%------------------------------------------------
+%%%%%\begin{frame}[fragile]
+%%%%%\frametitle{SCA Packet}
+%%%%%
+%%%%%{\relsize{-2}
+%%%%%SCA is a response to SCR
+%%%%%}
+%%%%%
+%%%%%\begin{center}
+%%%%%\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-3}]
+%%%%%
+%%%%%0                   1                   2                   3
+%%%%%0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|   Seq Nr of Current Request   | Availabe Sub. |  Adj  |Resv |A|
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%| Invalid Id    |       Reserved              |C|  Error Code   |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%|                     Capture Source ID                         |
+%%%%%+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+%%%%%
+%%%%%
+%%%%%\end{BVerbatim}
+%%%%%\end{center}
+%%%%%
+%%%%%\relsize{-2} CPVE will return the Error Code to ECC through the callback SessionObserver::onSCA()
+%%%%%\end{frame}
+%%%%%
+
+\newcommand{\bcode}[1]{\lstset{basicstyle=\ttfamily}\textbf{\lstinline{#1}}}
+\newcommand{\code}[1]{\lstset{basicstyle=\ttfamily}{\lstinline{#1}}}
+\newverbcommand{\verbred}{\color{red}}{}
+%\renewcommand{\FancyVerbFormatLine}[1]{\color{red}|#1|}
+%------------------------------------------------
+
+\section{SDP Sample}
+\begin{frame}[fragile]
+  \frametitle{SDP Offer Sample - Video}
+
+\begin{center}
+  \begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-5}, commandchars=\\\{\}]
+o=wme-mac-3.8.3 0 1 IN IP4 127.0.0.1
+
+s=-
+t=0 0
+a=cisco-mari:v1
+a=cisco-mari-rate
+m=\textcolor{red}{video} 20916 RTP/SAVPF 117 97
+c=IN IP4 10.140.80.170
+b=TIAS:2000000
+a=content:main
+a=sendrecv
+a=rtpmap:117 H264/90000
+a=fmtp:117 profile-level-id=420014;packetization-mode=1;max-mbps=108000;max-fs=3600;max-fps=3000;max-br=1500;max-dpb=11520
+a=rtpmap:97 H264/90000
+a=fmtp:97 profile-level-id=420014;packetization-mode=0;max-mbps=108000;max-fs=3600;max-fps=3000;max-br=1500;max-dpb=11520
+a=rtcp-fb:* nack pli
+a=rtcp-fb:* ccm tmmbr
+\color{red}a=extmap:1/sendrecv http://protocols.cisco.com/virtualid
+a=extmap:2/sendrecv http://protocols.cisco.com/framemarking
+a=extmap:3/sendrecv urn:ietf:params:rtp-hdrext:toffset
+a=extmap:4/sendrecv http://protocols.cisco.com/timestamp#100us
+a=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:JuH9kNsnutUPUdxhOUHSzz9ciK1Iuym/vi1KJaCV|2^31
+a=crypto:2 AES_CM_128_HMAC_SHA1_32 inline:JuH9kNsnutUPUdxhOUHSzz9ciK1Iuym/vi1KJaCV|2^31
+a=crypto:3 AES_CM_256_HMAC_SHA1_80 inline:JuH9kNsnutUPUdxhOUHSzz9ciK1Iuym/vi1KJaCVhnELzUQcd4dvrcuD8J/pvw&=& |2^31
+a=rtcp-mux
+\color{red}a=sprop-source:0 csi=1859024128;count=1;\color{blue}\textbf{simul=100|101}
+\color{red}a=sprop-simul:0 100 117 profile-level-id=42e014;max-mbps=108000;max-fs=3600;max-fps=3000;
+\color{red}a=sprop-simul:0 101 97 profile-level-id=42e014;max-mbps=108000;max-fs=3600;max-fps=3000;
+\color{red}a=rtcp-fb:* ccm cisco-scr
+a=ice-ufrag:Ush2
+a=ice-pwd:9i8J719C7w+Q+HiyPbwbuP
+a=candidate:1 1 UDP 2113933823 10.140.80.170 20916 typ HOST
+a=candidate:1 2 UDP 2113933822 10.140.80.170 20917 typ HOST
+a=candidate:2 1 TCP 2113933567 10.140.80.170 20310 typ HOST
+a=candidate:2 2 TCP 2113933566 10.140.80.170 20311 typ HOST
+\end{BVerbatim}
+\end{center}
+{\relsize{-4}
+Different from wme, we don't support simulcast currently, so we should append parameter \code{simul=100|101} in \code{a=sprop-source} attribute line
+
+This means we can send with simulcast id 100 or 101, but cannot send simultaneously
+}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}[fragile]
+  \frametitle{SDP Answer Sample - Video}
+
+\begin{center}
+  \begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-5}, commandchars=\\\{\}]
+
+o=linus 0 0 IN IP4 173.37.44.139
+s=-
+t=0 0
+a=ice-lite
+a=cisco-mari:v1
+a=cisco-mari-rate
+m=video 33434 RTP/SAVPF 108 107
+c=IN IP4 173.37.44.139
+b=TIAS:2000000
+a=content:main
+a=sendrecv
+a=rtpmap:108 H264/90000
+a=fmtp:108 profile-level-id=420014;packetization-mode=1;max-mbps=108000;max-fs=3600;max-fps=3000;max-br=1500;max-dpb=891;level-asymmetry-allowed=1
+a=rtpmap:107 H264/90000
+a=fmtp:107 profile-level-id=420014;packetization-mode=0;max-mbps=108000;max-fs=3600;max-fps=3000;max-br=1500;max-dpb=891;level-asymmetry-allowed=1
+a=rtcp-fb:* nack pli
+a=rtcp-fb:* ccm tmmbr
+\color{red}a=extmap:1/sendrecv http://protocols.cisco.com/virtualid
+a=extmap:2/sendrecv http://protocols.cisco.com/framemarking
+a=extmap:3/sendrecv urn:ietf:params:rtp-hdrext:toffset
+a=extmap:4/sendrecv http://protocols.cisco.com/timestamp#100us
+a=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:9Dfg5ksdvdSPnCL9KMvK8E3SHseEB733fXZcXX6p
+a=rtcp-mux
+a=label:200
+\color{red}a=sprop-source:0 count=20;policies=as:1
+\color{red}=sprop-simul:0 0 *
+\color{red}a=rtcp-fb:* ccm cisco-scr
+a=ice-ufrag:jAGg1TOx
+a=ice-pwd:ZlOTZFCe1oOAYbOcYhRkd0ojZ+C989Uj
+a=candidate:0 1 UDP 2130706431 173.37.44.139 33434 typ host
+a=candidate:8 1 TCP 1962934271 173.37.44.139 33434 typ host tcptype passive
+
+\end{BVerbatim}
+\end{center}
+\end{frame}
+%------------------------------------------------
+\begin{frame}[fragile]
+  \frametitle{SDP Offer Sample - Audio}
+
+\begin{center}
+  \begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-5}, commandchars=\\\{\}]
+
+m=\textcolor{red}{audio} 20352 RTP/SAVPF 101
+c=IN IP4 10.140.80.170
+b=TIAS:64000
+a=content:main
+a=sendrecv
+a=rtpmap:101 opus/48000/2
+a=fmtp:101 maxplaybackrate=48000;maxaveragebitrate=64000;stereo=1
+\color{red}a=extmap:1/sendrecv http://protocols.cisco.com/virtualid
+a=extmap:2/sendrecv urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=extmap:3/sendrecv urn:ietf:params:rtp-hdrext:toffset
+a=extma
+2015-03-23T05:30:55.206, INFO, 707, SQ_WME_LOG: [2] p:4/sendrecv http://protocols.cisco.com/timestamp#100us
+a=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:JuH9kNsnutUPUdxhOUHSzz9ciK1Iuym/vi1KJaCV|2^31
+a=crypto:2 AES_CM_128_HMAC_SHA1_32 inline:JuH9kNsnutUPUdxhOUHSzz9ciK1Iuym/vi1KJaCV|2^31
+a=crypto:3 AES_CM_256_HMAC_SHA1_80 inline:JuH9kNsnutUPUdxhOUHSzz9ciK1Iuym/vi1KJaCVhnELzUQcd4dvrcuD8J/pvw==|2^31
+a=rtcp-mux
+\color{red}a=sprop-source:0 csi=1859024129;count=1
+\color{red}a=sprop-simul:0 100 *
+\color{red}a=rtcp-fb:* ccm cisco-scr
+a=ice-ufrag:pNQf
+a=ice-pwd:vHxaTevmZavo+M6WJ/UmWC
+a=candidate:1 1 UDP 2113933823 10.140.80.170 20352 typ HOST
+a=candidate:1 2 UDP 2113933822 10.140.80.170 20353 typ HOST
+a=candidate:2 1 TCP 2113933567 10.140.80.170 20702 typ HOST
+a=candidate:2 2 TCP 2113933566 10.140.80.170 20703 typ HOST
+\end{BVerbatim}
+\end{center}
+\end{frame}
+%------------------------------------------------
+
+\section{CPVE APIs}
+%------------------------------------------------
+%\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\begin{frame}
+  \frametitle{CPVE APIs}
+  {\small
+  \begin{itemize}
+    \setlength\itemsep{1em}
+    \item \lstset{basicstyle=\ttfamily}\textbf{\lstinline{Session::enableCiscoSCR(bool enabled)}}
+
+      {\footnotesize
+      Enable or Disable SCR, to enable SCR, SDP offer should contain attribute \lstinline{a=rtcp-fb:* ccm cisco-scr}
+    }
+    \item \bcode{Session::registerPolicyId(unsigned int sourceId, SCRPolicyType policyType, unsigned short policyId, CPVEError* error = NULL)}
+
+      {\footnotesize
+      This API is to tell CPVE the policy type and policy id that server support from SDP answer \code{a=sprop-source:0 count=20;policies=as:1}
+
+      Since the server will always support Active Speaker, so CPVE have set some default value, and will always send SCR with Active Speaker. 
+
+      Currently, ECC does not need the APIs, you can just ignore it.
+    }
+
+  \end{itemize}
+}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+  \frametitle{CPVE APIs Cont.}
+  {\small
+  \begin{itemize}
+    \setlength\itemsep{1em}
+    \item \bcode{Session::getCSI()}
+
+      {\footnotesize
+      CSI (Capture Source Id) is used to identify a physical media capture source, such as a camera or microphones within an RTP session. 
+      
+      CPVE will generate a CSI for each session when session is created, and will tag RTP session with this csi in the CSRC field of RTP header. 
+      ECC can call this API to get the CSI for SDP offer \code{a=sprop-source:0 csi=1859024128;count=1}
+      } 
+
+    \item \bcode{Session::sendSCR(unsigned int sourceId, const SCRCodecParams\& scr,  CPVEError* error = NULL)}
+
+%      \code{sourceId}: should be the same as it in SDP offer \code{a=sprop-source:0 csi=1859024128;count=1}, since we don't support multi-source, suggested the sourceId be 0. 
+      \code{sourceId}: should be 0
+
+      \code{SCRCodecParams}: contains the codec parameters that are required in SCR packet;
+  \end{itemize}
+}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+  \frametitle{CPVE APIs Cont.}
+  {\small
+  \begin{itemize}
+    \setlength\itemsep{1em}
+    \item  \bcode{SessionObserver::onSCA(SessionPtr stream, SCARetCode ret)}
+
+      This callback will return the error code in SCA which is a response to SCR. 
+
+  \end{itemize}
+}
+{\small
+  Actually, you can just concern the following three APIs for SCR currently.
+  \begin{itemize}
+      \item \code{enableCiscoSCR()}
+      \item \code{getCSI()}
+      \item \code{sendSCR()}
+    \end{itemize}
+}
+\end{frame}
+
+
+%------------------------------------------------
+\section{SDP Changes}
+%------------------------------------------------
+\subsection{SDP Offer} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\begin{frame}
+  \frametitle{SDP Offer}
+  {\small
+  \begin{itemize}
+    \setlength\itemsep{1em}
+    \item \bcode{a=rtcp-fb:* ccm cisco-scr}
+
+      {\footnotesize
+      indicate endpoint support scr.
+    }
+
+    \item \bcode{a=extmap:1/sendrecv http://protocols.cisco.com/virtualid}
+
+      {\footnotesize
+      virtualid is the same as sub-session channel id, used to identify sub-session in multistream. For SCR/SCA, All RTP packet should be tagged with this value in RTP header extension. 
+      So in SDP offer, we should add this extension mapping attribute to support RTP header extenstion.
+      For virtualid, the local id in extmap is 1, and the URI is http://protocols.cisco.com/virtualid. 
+      
+      So, ECC can just hard code this line.
+    }
+
+  \end{itemize}
+}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+  \frametitle{SDP Offer}
+  {\small
+  \begin{itemize}
+    \setlength\itemsep{1em}
+%
+    \item \bcode{a=sprop-source:0 csi=1859024128;count=1;simul=100|101}
+      
+      {\footnotesize
+      source id: is used to identify stream capabilities, is 8-bits value, suggest be 0
+
+      count: source count, since we don't support Multi-source, this is always 1;
+
+      csi: see privious, can get by \code{Session::getCSI()};
+
+      simul: here 100 and 101 are both simulcast id, this parameter signals the simulcast encoding of the source that can be sent simultaneously. 
+    }
+
+  \end{itemize}
+}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+  \frametitle{SDP Offer}
+  {\small
+  \begin{itemize}
+    \item \bcode{a=sprop-simul:0 100 126 profile-level-id=42e014;max-mbps=108000;max-fs=3600;max-fps=3000;}
+    \item \bcode{a=sprop-simul:0 101 97 profile-level-id=42e014;max-mbps=108000;max-fs=3600;max-fps=3000;}
+      {\footnotesize 
+
+        this attribute indicates the source encoding format, each encoding format the source support should be advertised by this attribute. the format of the attribute is as below:
+
+        \code{a=sprop-simul:<source id> <simulcast id> <format> <format specific parameters>}
+
+        source id, same as above
+        simulcast id, to identify each encoding, will be used in \code{simul=} in \code{a=spop-source}, the value is no any in particular, looks usually start from 100;
+
+        format, same as the payload type in this m-line
+
+        for audio, we can just use \code{a=sprop-simul:0 100 *}
+    }
+  \end{itemize}
+
+  We have four attributes should be added in SDP Offer 
+
+}
+\end{frame}
+
+%------------------------------------------------
+\subsection{SDP Answer} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+  \frametitle{SDP Answer}
+  \begin{itemize}
+    \setlength\itemsep{1em}
+    \item \code{a=rtcp-fb:* ccm cisco-scr}
+    \item \code{a=extmap:1/sendrecv http://protocols.cisco.com/virtualid}
+
+      These two line are the same as SDP offer
+    \item \code{a=sprop-source:0 count=20;policies=as:1}
+
+      a little diffent from SDP offer, the server support multi-source up 20, and the policy Active Speaker, the policy id is 0
+
+    \item \code{a=sprop-simul:0 0 *}
+  \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{CPVE \& ECC Changes}
+%------------------------------------------------
+\begin{frame}[fragile]
+  \frametitle{Current Flow}
+
+%\item {\relsize{-2} SCR/SCA Flow}
+\begin{center}
+\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-5}, commandchars=\\\{\}]
+
+
+
+                                                                                        m=video 14194 RTP/SAVP 126 97           
+                                                                            rxStart     ------- SDP offer -------->             
+                                                                                                                  
+                                                                                        <------- SDP answer -------      
+                  m=video 14194 RTP/SAVP 126 97                             txStart     m=video 33434 RTP/SAVPF \color{red}108 107
+       rxStart    ------- SDP offer -------->                                  pt=108                                                  
+                                                                                        ---------- SCR ----------->        
+Jabber             <------- SDP answer -------   CUCM(Jabber)                                                                   
+                  m=video 36310 RTP/SAVP 126                          Jabber            <--------- SCA ------------        Linus
+       txStart 126                                                                                                              
+                                                                                        <--------- SCR ------------        
+                                                                                                       pt = 107
+                  <---------- RTP ----------->                                                                                  
+                                                                                        ---------- SCA ----------->       
+                                                                                                                                
+                                                                                        <---------- RTP ----------->            
+
+\end{BVerbatim}
+\end{center}
+{\relsize{-3}
+There are two difference 
+\begin{itemize}
+    \item SDP Answer may contain more than one payload type;
+    \item SCR received contain payload type may not the same as we set in txStart
+\end{itemize}
+}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]
+  \frametitle{Correct Flow}
+
+%\item {\relsize{-2} SCR/SCA Flow}
+\begin{center}
+\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-4}]
+
+
+                  m=video 14194 RTP/SAVP 126 97                            
+      rxStart     ------- SDP offer -------->        
+                                            
+                  <------- SDP answer -------      
+                  m=video 33434 RTP/SAVPF 108 107
+
+
+                  ---------- SCR ----------->     start    
+                              pt = 97            transmit 97
+
+Jabber            <--------- SCA ------------             Linus
+
+                  <--------- SCR ------------        
+       CPVE                        pt = 107
+      start transmit 107 
+                  ---------- SCA ----------->       
+
+                  <---------- RTP ----------->        
+                   
+                     (expected flow)
+
+\end{BVerbatim}
+\end{center}
+
+{\relsize{-3}
+\begin{itemize}
+    \item Server does not support receiving cut through media, so we cannot start media transmitting before receiving SCR from server
+    \item we should start media transmitting with the payload type specified in SCR received.
+    \item After SDP negotiated, client should trigger an SCR with the payload type which we expecte to receive. 
+      
+\end{itemize}
+}
+\end{frame}
+%------------------------------------------------
+
+
+\begin{frame}[fragile]
+  \frametitle{Solution}
+
+\begin{center}
+\begin{BVerbatim}[fontfamily=courier, fontsize=\relsize{-4}, commandchars=\\\{\}]
+
+                        m=video 14194 RTP/SAVP 126 97
+            rxStart     ------- SDP offer -------->        
+                                                  
+        CPVE: hold on   <------- SDP answer -------      
+        ECC: prepare     m=video 33434 RTP/SAVPF \color{red}108 107
+        transmit codecs 
+            
+
+          ECC trigger   ---------- SCR ----------->        
+                                   pt = 97            txStart 97
+    
+  Jabber                <--------- SCA ------------                 Linus
+
+                        <--------- SCR ------------        
+        cpve start                   pt = 107
+        transmit 107
+                        ---------- SCA ----------->       
+
+                        <---------- RTP ----------->        
+                           
+                               (our solution)
+
+\end{BVerbatim}
+\end{center}
+
+{\relsize{-3}
+Both CPVE and ECC need some change
+\begin{itemize}
+  \item \textbf{CPVE}: ECC can still call txStart() after SDP negotiated. CPVE will hold on, it will not start media transmitting really until receive an SCR.
+  \item \textbf{CPVE}: When handling the SCR received, CPVE should start Media transmitting with the payload type and codec parameters in SCR.
+  \item \textbf{ECC}: ECC should add all the payloads in SDP answer to transmitCodecList by calling \code{addTransmitCodec()} in txStart(), just like what is doing in rxStart() for receiveCodecList currently
+  \item \textbf{ECC}: ECC should trigger sendSCR() after SDP negotiated
+\end{itemize}
+}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+
+\frametitle{References}
+\footnotesize{
+\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+%
+%%Multisource simulcast negotiation specification
+%%multistream-signalling
+%\bibitem[Smith, 2012]{p1} John Smith (2012)
+\bibitem[]{p1} Multisource simulcast negotiation specification %\url{http://wwwin-eng.cisco.com/Eng/TSBU/Multistream/}
+\bibitem[]{p1} multistream-signalling %\url{http://wwwin-eng.cisco.com/Eng/TSBU/Multistream/}
+%\newblock Title of the publication
+%\newblock \emph{Journal Name} 12(3), 45 -- 678.
+\bibitem[]{p1} RFC4585 %\url{https://tools.ietf.org/html/rfc4585}
+\bibitem[]{p1} RFC5285 %\url{https://tools.ietf.org/html/rfc5285}
+\end{thebibliography}
+}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{The End}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
