@@ -1,0 +1,203 @@
+This is a study not for "The compact Org-mode Guide"
+
+
+* Document Structure
+** Outlines
+** Headlines
+** Visibility cycling
+** Motion
+** Structing editing
+** Sparse trees
+** Plain lists
+*** unordered list start with '-', '+', '*'
+**** this is test for unordered list
+- list item1
+- list item2
+
+
+*** ordered list start with '1.', or '1)'
+**** test for ordered list
+1. haha2
+2. haha323
+*** Description list use '::' to separate the term from the description
+     My favorite scenes are 
+     1. the attack of robirrim
+     2. Erojeo's fight with the witch king
+	+ this is a ejfoe tes in the book
+	+ I releasy ljfoei
+     Important actors in the films are
+     - Ejfoeijiog Wood :: he plays Frodo
+     - Sean Austin :: he plays same
+     - jfeojfiowe :: fjoejfo
+** Footnotes
+   footnotes marker is square brackets in column 0, create a footnote C-c C-x f, this
+   is a footnote [fn:1], C-c C-c Jump betwwen definition and refrence
+
+[fn:1] http://www.baidu.com
+
+* Tables
+  Any line with '|' as the first non-whitespace character is considered part of a table. '|' is also
+  the column separator.
+| Name    | Phone          | Age   |
+|---------+----------------+-------|
+| Peter   | 12345          | 17    |
+| Anna    | fjoeijfoiefjeo | fjief |
+| Peng Li | fjeoi          | afoei |
+|---------+----------------+-------|
+| haha    | 2345           | bjie  |
+|---------+----------------+-------|
+|         |                |       |
+|---------+----------------+-------|
+|         |                |       |
+A Table Is Re-Aligned Automatically Each Time You Press TAB RET or C-c C-c inside the table, so create the 
+above table, you word only trye
+|Name|Phone|Age|
+|-
+then press TAB to align
+- M-left / :: right Move the current column left/right
+- M-S-left :: kill current column
+- M-S-right :: Insert a new column to left of the cursor
+- M-up / down :: Move the current row up/down
+- M-S-up/down :: Kill/Insert new row
+- C-c - ::  Insert a horizontal line below current row
+- C-c RET :: Inseert horizontal line
+- C-c ^ ::  Sort the tabel line in the region
+* Hyperlinks
+** Link format
+** Internal links
+'[[#my-custom-id]]'
+** External links
+[[http://baidu.com][baidu]]
+http://baidu.com
+[[file:/home/peli3/temp/aa.c][temp]]
+** Heading links
+** Targeted links
+
+* TO DO Items
+Org mode does not maintain TODO links as separate document. Instead, TODO items are
+an integral part of the notes file, because TODO items usually com up while taking
+notes.
+** Using TODO states
+Any headine becomes a TODO item when it starts with the word 'TODO,
+- C-c C-t :: Rotate state
+-  :: 
+**** TODO todo item1						   :tagstest:
+***** sub item1
+***** sub item2 
+***** sub item
+** Multi-state workflow
+***** defined state of todo item
+#+TODO: TODO(t) | DONE(d)
+#+TODO: REPORT(r) | BUG(d) KNOWNCAUSE(k) | FIXED(f)
+#+TODO: | CANCELED(c)
+** Progress logging
+- Closing items :: closing
+- Tracking TODO state changes :: 
+** Prioritis
+*** TODO [#C] item2
+*** TODO ittem3
+** Breaking tasks down into subtasks
+*** TODO item
+**** DONE sub item
+**** TODO sub 2
+**** TODO item3
+- [] jfeofjei
+** Checkboxes
+Every item in a plain list can be made into a checkbox by starting with '[ ]'
+Checkboxes are not included in global TODO list, so they are ofter great to 
+split a task into a number of simple steps.
+- M-S-RET :: insert a new item with a checkbox
+- C-c C-t :: toggle status of checkbox
+*** TODO party
+    - [-] call pelple
+      - [ ] Peter
+      - [X] Sarah
+    - [X] order food
+    - [ ] think about what music to play
+    - [ ] 
+* Tags
+An excellent way to implement labels and contets for cross-correlate information is to 
+assign tags to headlines.
+Every headline can contains a list of tags; ':work:'
+- C-c C-c :: new a tag for the headline
+- C-c C-q ::  the same
+** Tag inheritance
+** Setting tags
+*** tags test						       :testtag:work:
+*** tags list 
+** Tag groups
+*** haha							       :tata:i
+** Tag searches
+
+#+TAGS: @work @home @tenisclub
+#+TAGS: laptop cap pc sailboat
+* Properties
+Properties are key-value paries associated with a entry.
+- C-c C-x p :: Set a property
+- C-c C-c d :: Remove a property from current entry
+** CD collection
+*** classic
+**** Goldberg Variations
+     :PROPERTIES:
+     :XYZ:      haha
+     :END:      
+
+* Dates and Times
+To assist project planning, TODO items can be labeled with a date and/or a timeee,
+timestamp in orgmode
+- C-c . :: insert a corresponding timestamp
+- C-c ! :: like C-c . but insert an inactive timestamp that will not cause an agenda entry.
+- C-c C-d :: insert DEADLINE keywork
+** Timestamps
+** Creating timestamps
+** Deadlines and scheduling
+*** deadline test
+    DEADLINE: <2015-06-21 Sun>
+** Clocking work time
+Org mode allows you to clock the time you spend on special tasks in a project.
+* Capture - Refile - Archive
+org mode can quickly capture new ideas and tasks, and to associate reference material with them.
+Org defines a capture process to create tasks. it stores files related to a task in a special directory.
+** Capture
+
+* Agenda Views
+* Exporting
+- C-c C-e :: Insert template with export options, see
+- C-c C-e t a  ::  export as ASCII file or temporary buffer
+- C-c C-e h h :: export as HTML file
+- C-c C-e h o :: export as HTML and open it with a browser immediately
+- C-c C-e l l :: export as Latex
+- C-c C-e l p :: export as LaTex file and process to PDF
+- C-c C0e l o :: export as LaTex , process PDF and then open it
+ice file
+
+* Publishing
+
+* Working with source code
+Org-mode provides a number of feature for working with source code, including editing of
+code blocks in their native major-mode, evaluation of code blocks, tangling of code blocks,
+and exporting code blocks and their results in several formats
+** Structure of Code Blocks
+#+NAME: <name>
+#+BEGIN_SRC <language> <switches> <head argument>
+   <body>
+#+END_SRC
+** Editing source code
+- C-c ' :: edit the current code block
+- C-c C-c :: to evaluate the current code block and insert its results in the Org-mode buffer.
+** Evaluating code block
+#+BEGIN_SRC emacs-lisp
+   (+ 1 2 3 4 5)
+#+END_SRC
+
+#+RESULTS:
+: 15
+** Library of Babel
+** Header Arguments
+* miscellaneousi
+** Completion
+Org supports in-buffer completion with M-TAB. This type of completion does not make use
+of the minibuffer. You simply type a few letters into the buffer and use the key to complete
+text right there.
+** A cleaner outline view
+** MobileOrg
